@@ -1,16 +1,29 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { Button, Form } from 'react-bootstrap'; // If you plan to use react-bootstrap components
 import { AssessmentService } from '../../services/AssessmentService';
 
 export const NewAssessment = () => {
+  const {
+    formState: { errors },
+    handleSubmit,
+    register,
+  } = useForm();
 
-  // create a form that utilizes the "onSubmit" function to send data to
-  // packages/client/src/services/AssessmentService.js and then onto the packages/api/src/routes/assessment express API
   const onSubmit = async (data) => {
     await AssessmentService.submit(data);
+    // Additional logic after submitting the form
   };
 
-  return <Form>
-    <Button variant="primary" type="submit">Submit</Button>
-  </Form>;
+  return (
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register(`firstName`)} />
+      <input {...register(`lastName`, { required: true })} />
+      {errors.lastName && <p>Last name is required.</p>}
+      <input {...register(`age`, { pattern: /\d+/s })} />
+      {errors.age && <p>Please enter number for age.</p>}
+      <br />
+      <Button variant="primary" type="submit">Submit</Button>
+    </Form>
+  );
 };
