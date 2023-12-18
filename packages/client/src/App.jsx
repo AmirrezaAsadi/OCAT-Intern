@@ -5,7 +5,6 @@ import { DashboardBulletin } from './pages/Dashboard/DashboardBulletin';
 import { NewAssessment } from './pages/Assessments/NewAssessment.jsx';
 import { AssessmentList } from './pages/Assessments/AssessmentList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyForm from './pages/Assessments/MyForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,8 +19,7 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => <SiteWrapper>
-  <h1>This is Amir, Trying to learn </h1>
-  <MyForm />
+  <h1>Amir Test </h1>
   <RouterProvider router={router} />
 
 </SiteWrapper>;
