@@ -48,11 +48,12 @@ export const NewAssessment = () => {
       <label htmlFor="previousCatJudicialSystem">Previous contact with the Cat Judicial System</label>
       <input type="radio" {...register(`previousCatJudicialSystem`)} value="yes" /> Yes
       <input type="radio" {...register(`previousCatJudicialSystem`)} value="no" defaultChecked /> No
+      <br />
 
       <label htmlFor="physicalAltercationsWithCats">Physical altercations with other cats</label>
       <input type="radio" {...register(`physicalAltercationsWithCats`)} value="0-3" defaultChecked /> 0-3 altercations
       <input type="radio" {...register(`physicalAltercationsWithCats`)} value="3+" /> 3+ altercations
-
+      <br />
       <label htmlFor="physicalAltercationsWithOwner">
         Physical altercations with owner (scratching, biting, etc...)
       </label>
@@ -63,15 +64,13 @@ export const NewAssessment = () => {
         defaultChecked
       /> 0-10 altercations
       <input type="radio" {...register(`physicalAltercationsWithOwner`)} value="10+" /> 10+ altercations
-
+      <br />
       <label htmlFor="playsWellWithDogs">Plays well with dogs</label>
       <input type="radio" {...register(`playsWellWithDogs`)} value="yes" defaultChecked /> Yes
       <input type="radio" {...register(`playsWellWithDogs`)} value="no" /> No
-
+      <br />
       <label htmlFor="hissesAtStrangers">Hisses at strangers</label>
       <input type="radio" {...register(`hissesAtStrangers`)} value="yes" id="hissesAtStrangers" /> Yes
-      <input type="radio" {...register(`hissesAtStrangers`)} value="no" defaultChecked /> No
-      <input type="radio" {...register(`hissesAtStrangers`)} value="yes" /> Yes
       <input type="radio" {...register(`hissesAtStrangers`)} value="no" defaultChecked /> No
 
       <Button variant="primary" type="submit">Submit</Button>
