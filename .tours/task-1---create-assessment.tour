@@ -24,6 +24,11 @@
       "title": "Config"
     },
     {
+      "file": "packages/api/src/microservices/Assessment-Service.js",
+      "description": "# Assessment Microservice\n\nThis step will introduce an ORM (Object-Relational Mapping) tool we use for this project called \"`Sequelize`\"\nUse Sequelize to save the assessment data from the front-end form into the PostgreSQL database.\n\nHINT: use Sequelize's `.create()` function: https://sequelize.org/api/v6/class/src/model.js~model#static-method-create\n",
+      "line": 8
+    },
+    {
       "file": "packages/api/package.json",
       "description": "# Start Application\n\n1. Open a second terminal window by using the split functionality\n2. Navigate into the API directory (folder) with the command `cd ../packages/api/`\n3. `npm install`\n4. `npm run dev`",
       "line": 7
@@ -32,11 +37,6 @@
       "file": "packages/api/src/routes/assessment.js",
       "description": "# API Router - /assessment/submit\n\nReceive the POST request from the front-end server and call the `.submit()` function in [packages/api/src/microservices/Assessment-Service/index.js](./packages/api/src/microservices/Assessment-Service/index.js).  Pass in the assessment data from the request parameters.",
       "line": 13
-    },
-    {
-      "file": "packages/api/src/microservices/Assessment-Service.js",
-      "description": "# Assessment Microservice\n\nThis step will introduce an ORM (Object-Relational Mapping) tool we use for this project called \"`Sequelize`\"\nUse Sequelize to save the assessment data from the front-end form into the PostgreSQL database.\n\nHINT: use Sequelize's `.create()` function: https://sequelize.org/api/v6/class/src/model.js~model#static-method-create\n",
-      "line": 8
     },
     {
       "file": "packages/api/src/microservices/Assessment-Service.js",

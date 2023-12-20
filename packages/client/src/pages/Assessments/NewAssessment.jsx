@@ -15,7 +15,7 @@ export const NewAssessment = () => {
   const onSubmit = async (data) => {
     // Calculate scores based on responses
     data.score = calculateScore(data);
-    await AssessmentService.submit(data);
+    await AssessmentService.submit({ assessment: data });
     // Additional logic after submitting the form
   };
 
@@ -38,11 +38,11 @@ export const NewAssessment = () => {
       <input {...register(`age`, { pattern: /\d+/ })} />
       {errors.age && <p>Please enter number for age.</p>}
 
-      {/* New fields for Cat Behavioral Instrument */}
       <h3>Cat Behavioral Instrument</h3>
+      <input {...register(`instrumentType`)} />
       <h4>Cat Details</h4>
       <input {...register(`catName`)} placeholder="Cat Name" />
-      <input type="date" {...register(`catDOB`)} placeholder="Cat Date of Birth" />
+      <input type="date" {...register(`catDateOfBirth`)} placeholder="Cat Date of Birth" />
 
       <h4>Questions & Responses</h4>
       <label htmlFor="previousCatJudicialSystem">Previous contact with the Cat Judicial System</label>

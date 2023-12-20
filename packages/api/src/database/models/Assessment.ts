@@ -41,7 +41,7 @@ InferCreationAttributes<Assessment>
         type: DataTypes.INTEGER,
       },
       riskLevel: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
       catName: {

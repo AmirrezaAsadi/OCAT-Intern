@@ -1,48 +1,48 @@
+// Import necessary modules and middleware
+const { Router } = require(`express`);
 const { AssessmentService } = require(`../microservices`);
 const { ResponseHandler } = require(`../utils`);
 
-const { Router } = require(`express`);
-
+// Initialize the router
 const assessmentRouter = Router();
 
-assessmentRouter.post(
-  `/`,
-  async (req, res, next) => {
-    try {
-      const { assessment } = req.body;
+// POST endpoint to submit an assessment
+assessmentRouter.post(`/submit`, async (req, res, next) => {
+  try {
 
-      // verify that your data is making it here to the API by using console.log(assessment);
-      // call the AssessmentService.submit function from packages/api/src/microservices/Assessment-Service.js and
-      // supply the correct parameters
+    const { assessment } = req.body;
 
-      ResponseHandler(
-        res,
-        `Submitted assessment`,
-        {},
-      );
-    } catch (err) {
-      next(err);
-    }
-  },
-);
+    // eslint-disable-next-line no-console
+    console.log(`response in the backend`, assessment);
 
-assessmentRouter.get(
-  `/`,
-  async (req, res, next) => {
-    try {
-      // verify that your data is making it here to the API by using console.log();
-      // call the AssessmentService.getList function from packages/api/src/microservices/Assessment-Service.js
-      const assessments = [];
+    // Call the submit method from AssessmentService with the assessment data
+    const submissionResult = await AssessmentService.submit(assessment);
 
-      ResponseHandler(
-        res,
-        `Fetched assessments`,
-        { assessments },
-      );
-    } catch (err) {
-      next(err);
-    }
-  },
-);
+    // Send a response indicating successful submission
+    ResponseHandler(res, `Submitted assessment`, {});
+  } catch (err) {
 
+    next(err);
+  }
+});
+
+// GET endpoint to fetch assessments
+assessmentRouter.get(`/`, async (req, res, next) => {
+  try {
+    // Log a message to confirm the endpoint is reached
+    // eslint-disable-next-line no-console
+    console.log(`Fetching assessments`);
+
+    // Call the getList method from AssessmentService to retrieve assessments
+    const assessments = await AssessmentService.getList();
+
+    // Send a response with the fetched assessments
+    ResponseHandler(res, `Fetched assessments`, { assessments });
+  } catch (err) {
+
+    next(err);
+  }
+});
+
+//
 module.exports = { assessmentRouter };
