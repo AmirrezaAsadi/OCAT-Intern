@@ -15,6 +15,7 @@ export const NewAssessment = () => {
   const onSubmit = async (data) => {
     // Calculate scores based on responses
     data.score = calculateScore(data);
+    data.riskLevel = calculateRiskLevel(data.score);
     await AssessmentService.submit({ assessment: data });
     // Additional logic after submitting the form
   };
@@ -27,6 +28,20 @@ export const NewAssessment = () => {
     score += formData.playsWellWithDogs ? 0 : 1;
     score += formData.hissesAtStrangers ? 1 : 0;
     return score;
+  };
+
+  // add function to calculate risk level based on score, if it is between 0-2 then low, 3-4 then medium, 5-6 then high
+  const calculateRiskLevel = (score) => {
+    let riskLevel = `low`;
+
+    if (score >= 0 && score <= 2) {
+      riskLevel = `low`;
+    } else if (score >= 3 && score <= 4) {
+      riskLevel = `medium`;
+    } else if (score >= 5 && score <= 6) {
+      score = `high`;
+    }
+    return riskLevel;
   };
 
   return (

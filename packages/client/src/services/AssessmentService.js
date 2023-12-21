@@ -4,7 +4,7 @@ export class AssessmentService {
   static submit(assessment) {
     try {
 
-      assessment.assessment.riskLevel = `low`;
+      // assessment.assessment.riskLevel = `low`;
 
       return Axios.post(`/assessment/submit`, assessment)
         .then(response => response.data);
