@@ -3,6 +3,7 @@ const { Router } = require(`express`);
 const { AssessmentService } = require(`../microservices`);
 const { ResponseHandler } = require(`../utils`);
 
+// not sure on step 5 of task 2
 // Initialize the router
 const assessmentRouter = Router();
 
@@ -16,7 +17,6 @@ assessmentRouter.post(`/submit`, async (req, res, next) => {
     console.log(`response in the backend`, assessment);
 
     // Call the submit method from AssessmentService with the assessment data
-    const submissionResult = await AssessmentService.submit(assessment);
 
     // Send a response indicating successful submission
     ResponseHandler(res, `Submitted assessment`, {});
@@ -27,7 +27,7 @@ assessmentRouter.post(`/submit`, async (req, res, next) => {
 });
 
 // GET endpoint to fetch assessments
-assessmentRouter.get(`/`, async (req, res, next) => {
+assessmentRouter.get(`/list`, async (req, res, next) => {
   try {
     // Log a message to confirm the endpoint is reached
     // eslint-disable-next-line no-console

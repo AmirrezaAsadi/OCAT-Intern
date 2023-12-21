@@ -15,12 +15,15 @@ const router = createBrowserRouter([
     element: <NewAssessment />,
     path: `/assessment/new`,
   },
-
+  {
+    element: <AssessmentList />,
+    path: `/assessment/list`,
+  },
 ]);
 // a
 
 const App = () => <SiteWrapper>
-  <h1>Amir Test </h1>
+
   <RouterProvider router={router} />
 
 </SiteWrapper>;
