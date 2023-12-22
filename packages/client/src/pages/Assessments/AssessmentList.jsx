@@ -24,6 +24,14 @@ export const AssessmentList = () => {
         accessor: `catName`,
       },
       // Add more columns as needed
+      {
+        Header: `Date of Birth`,
+        accessor: `catDateOfBirth`, // Assuming 'dob' is the key for the date of birth in your data
+      },
+      {
+        Header: `Risk Level`,
+        accessor: `riskLevel`, // Assuming 'dob' is the key for the date of birth in your data
+      },
     ],
     []
   );

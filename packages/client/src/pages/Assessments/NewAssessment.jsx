@@ -22,6 +22,12 @@ export const NewAssessment = () => {
     // Additional logic after submitting the form
   };
 
+  const instrumentTypes = [
+    { id: 1, name: `Reference` },
+    { id: 2, name: `Course` },
+    { id: 3, name: `Service` },
+    // Add more types as needed
+  ];
   const calculateScore = (formData) => {
     let score = 0;
     score += formData.previousCatJudicialSystem ? 1 : 0;
@@ -54,8 +60,11 @@ export const NewAssessment = () => {
       <h4> Last Name</h4>
       <input {...register(`lastName`, { required: true })} placeholder="Doe" />
       {errors.lastName && <p>Last name is required.</p>}
-      <h3>Cat Behavioral Instrument</h3>
-      <input {...register(`instrumentType`)} />
+      <h4>Cat Behavioral Instrument</h4>
+      <select {...register(`instrumentType`)}>
+        {instrumentTypes.map((type) =>
+          <option key={type.id} value={type.id}>{type.name}</option>)}
+      </select>
       <h4>Date of Birth</h4>
       <input type="date" {...register(`catDateOfBirth`)} placeholder="Cat Date of Birth" />
 
