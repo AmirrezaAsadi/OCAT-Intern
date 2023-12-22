@@ -16,6 +16,8 @@ export const NewAssessment = () => {
     // Calculate scores based on responses
     data.score = calculateScore(data);
     data.riskLevel = calculateRiskLevel(data.score);
+    const catName = `${data.firstName} ${data.lastName}`;
+    data.catName = catName;
     await AssessmentService.submit({ assessment: data });
     // Additional logic after submitting the form
   };
@@ -47,16 +49,14 @@ export const NewAssessment = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {/* Existing fields */}
-      <input {...register(`firstName`)} />
-      <input {...register(`lastName`, { required: true })} />
+      <h4> First Name</h4>
+      <input {...register(`firstName`)} placeholder="John" />
+      <h4> Last Name</h4>
+      <input {...register(`lastName`, { required: true })} placeholder="Doe" />
       {errors.lastName && <p>Last name is required.</p>}
-      <input {...register(`age`, { pattern: /\d+/ })} />
-      {errors.age && <p>Please enter number for age.</p>}
-
       <h3>Cat Behavioral Instrument</h3>
       <input {...register(`instrumentType`)} />
-      <h4>Cat Details</h4>
-      <input {...register(`catName`)} placeholder="Cat Name" />
+      <h4>Date of Birth</h4>
       <input type="date" {...register(`catDateOfBirth`)} placeholder="Cat Date of Birth" />
 
       <h4>Questions & Responses</h4>
@@ -72,6 +72,7 @@ export const NewAssessment = () => {
       <label htmlFor="physicalAltercationsWithOwner">
         Physical altercations with owner (scratching, biting, etc...)
       </label>
+      <br />
       <input
         type="radio"
         {...register(`physicalAltercationsWithOwner`)}

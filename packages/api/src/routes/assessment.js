@@ -17,7 +17,7 @@ assessmentRouter.post(`/submit`, async (req, res, next) => {
     console.log(`response in the backend`, assessment);
 
     // Call the submit method from AssessmentService with the assessment data
-
+    await AssessmentService.submit(assessment);
     // Send a response indicating successful submission
     ResponseHandler(res, `Submitted assessment`, {});
   } catch (err) {
