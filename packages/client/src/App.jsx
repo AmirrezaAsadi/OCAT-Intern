@@ -4,6 +4,7 @@ import { SiteWrapper } from './components';
 import { DashboardBulletin } from './pages/Dashboard/DashboardBulletin';
 import { NewAssessment } from './pages/Assessments/NewAssessment.jsx';
 import { AssessmentList } from './pages/Assessments/AssessmentList';
+import { Login } from './pages/Dashboard/Login.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     element: <AssessmentList />,
     path: `/assessment/list`,
+  },
+  {
+    element: <Login />,
+    path: `/login`,
   },
 ]);
 // a
