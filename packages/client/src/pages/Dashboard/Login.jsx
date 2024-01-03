@@ -15,7 +15,7 @@ export const Login = () => {
     data.username = `username`;
     data.password = `password`;
 
-    await UserService.onSubmit(data);
+    await UserService.submit({ user: data });
     // Additional logic after successful login
   };
 
@@ -35,8 +35,10 @@ export const Login = () => {
         placeholder="Password"
       />
       {errors.password && <p>Password is required.</p>}
+      <br />
+      <br />
 
-      <Button variant="primary" type="submit">Login</Button>
+      <Button variant="primary" type="submit">Create New User</Button>
     </Form>
   );
 };
