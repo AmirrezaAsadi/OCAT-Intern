@@ -1,16 +1,17 @@
 const { User } = require(`../database/models`);
 const bcrypt = require(`bcrypt`);
 
-const saltRounds = 10; // You can adjust the number of salt rounds as needed
+const saltRounds = 10;
 
 exports.submit = async (userData) => {
   try {
-    // Hash the password before saving
     const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
     userData.password = hashedPassword;
 
     await User.create(userData);
   } catch (error) {
+
+    // eslint-disable-next-line no-console
     console.log(`Error saving the user:`, error);
     throw error;
   }
@@ -21,6 +22,7 @@ exports.getList = async () => {
     const users = await User.findAll();
     return users;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(`Error fetching users:`, error);
     throw error;
   }

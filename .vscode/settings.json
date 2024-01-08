@@ -25,5 +25,17 @@
     "UCCI"
   ],
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active"
+  "editor.guides.bracketPairs": "active",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "localdb",
+      "database": "ocat",
+      "username": "postgres",
+      "password": "postgres"
+    }
+  ]
 }

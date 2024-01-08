@@ -4,7 +4,7 @@ export class UserService {
   static submit(user) {
     try {
 
-      return Axios.post(`/login/submit`, user)
+      return Axios.post(`/user/submit`, user)
         .then(response => response.data);
     }
     catch (err) {

@@ -11,7 +11,6 @@ export class User extends Model<
 InferAttributes<User>,
 InferCreationAttributes<User>
 > {
-  // Sequelize will automatically handle the id, createdAt, and updatedAt fields
 
   // Declare an optional 'id' field
   public declare id: CreationOptional<number>;
@@ -25,34 +24,53 @@ InferCreationAttributes<User>
   // Declare a 'role' field
   public declare role: string;
 
-  // Other fields can be added here as needed
+  declare public createdAt: CreationOptional<Date>;
+  declare public updatedAt: CreationOptional<Date>;
+  declare public deletedAt: Date | null;
+
 }
 
 // Initialize the model
 export function initUserModel(sequelize: Sequelize): void {
   User.init(
     {
-      id: {
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
+      /* eslint-disable sort-keys */
 
-      passwordHash: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      role: {
-        allowNull: true,
-        type: DataTypes.STRING,
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
       },
       username: {
-        allowNull: false,
         type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
       },
+      passwordHash: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      // Adding createdAt, updatedAt, and deletedAt fields
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
 
-    },
+    }, // Add closing curly brace here
     {
       modelName: `User`, // Model name
       sequelize, // Pass the Sequelize instance
